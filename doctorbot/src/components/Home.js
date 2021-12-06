@@ -1,4 +1,5 @@
 import React from 'react';
+import '../App.css';
 
 const Form = () => {
     const handleSubmit = async (e) => {
@@ -23,7 +24,7 @@ const Form = () => {
     return (
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Nazwa użytkownika: </label>
+          <label>Login: </label>
           <input type="text" name="username" />
         </div>
         <div>
@@ -39,7 +40,7 @@ const Form = () => {
 
 export default function Home() {
     return (
-        <div>    
+        <div className='home'>    
             <Form/>
         </div>
     );

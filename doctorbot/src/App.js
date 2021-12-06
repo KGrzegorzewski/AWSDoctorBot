@@ -11,13 +11,14 @@ import {
 import Navigation from './components/Navigation';
 import Home from './components/Home';
 import About from './components/About';
+import Footer from './components/Footer';
 
 
 function App() {
   return (
-    <div>
+    <div className = 'navigation'>
         <Router>
-        <div className="App">
+        <div>
           <Navigation />
           <Routes>
             <Route path="/about" element={<About/>}>
@@ -27,6 +28,7 @@ function App() {
           </Routes>
         </div>
       </Router>
+      <Footer/>
     </div>
   );
 } 

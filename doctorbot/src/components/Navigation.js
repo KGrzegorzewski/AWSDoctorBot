@@ -1,15 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import '../App.css';
 
 export default function Navigation() {
     return (
-        <ul>
-            <li>
-                <Link to="/">Home</Link>
-            </li>
-            <li>
-                <Link to="/about">About</Link>
-            </li>
-        </ul>
+        <nav>
+            <Link className="navigation__link" to="/">Home</Link>
+            <Link className="navigation__link" to="/about">About</Link>
+        </nav>
     );
   }
