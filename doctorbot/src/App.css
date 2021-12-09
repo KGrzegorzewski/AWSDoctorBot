@@ -1,61 +1,52 @@
 body{
-    background-color: #8EC5FC;
-    background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+  background-color: #8EC5FC;
+  background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
 }
 .navigation{
-    justify-content: center;
-    text-align: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .navigation__link{
-    color: black;
-    display: inline-block;
-    box-sizing: border-box;
-    text-decoration: none;
-    cursor: pointer;
-    margin: 0 10px;
-    border: solid 2px #22333B;
-    padding: 10px;
-    border-radius: 5px;
+  color: black;
+  display: inline-block;
+  box-sizing: border-box;
+  text-decoration: none;
+  cursor: pointer;
+  margin: 0 10px;
+  margin-top: 10px;
+  border: solid 2px #22333B;
+  padding: 10px;
+  border-radius: 5px;
 }
 
 .navigation__link:hover{
-    background-color: #22333B;
-    color: white;
+  background-color: #22333B;
+  color: white;
 }
 
 .about{
-    margin-top: 50px;
-    margin-bottom: 300px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 30%;
-    padding: 30px;
-    border: solid 2px #22333B;
-    border-radius: 5px;
+  margin-top: 50px;
+  margin-bottom: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30%;
+  padding: 30px;
+  border: solid 2px #22333B;
+  border-radius: 5px;
 }
 
-.home{
-    margin-top: 50px;
-    margin-bottom: 500px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 30%;
-    padding: 30px;
-    border: solid 2px #22333B;
-    border-radius: 5px;
-}
 
 
 .footer {
-    grid-area: footer;
-    background-color: #F4D06F;
-    padding: 5px;
-    text-align: center;
-    border-radius: 5px; }
-    .footer__description {
-      color: #22333B; }
-    .footer__link {
-      text-decoration: none;
-      cursor: pointer;
-      color: #22333B; }
+  grid-area: footer;
+  background-color: #F4D06F;
+  padding: 5px;
+  text-align: center;
+  border-radius: 5px; }
+  .footer__description {
+    color: #22333B; }
+  .footer__link {
+    text-decoration: none;
+    cursor: pointer;
+    color: #22333B; }

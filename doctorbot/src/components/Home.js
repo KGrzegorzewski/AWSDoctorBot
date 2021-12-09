@@ -1,47 +1,81 @@
-import React from 'react';
-import '../App.css';
+import React,{Component} from 'react';
+import RegistrationAlert from './RegistrationAlert.js';
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import '../Home.css';
 
-const Form = () => {
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      const elements = e.target.elements;
-      const requestData = {
-        username: elements.username.value,
-        password: elements.password.value,
-      };
-      const requestJson = JSON.stringify(requestData);
-      try {
-        const response = await fetch("/path/to/backend", {
-          method: "POST",
-          body: requestJson,
-        });
-        const responseText = await response.text();
-        console.log(responseText);
-      } catch (ex) {
-        console.error("POST - błąd!");
+class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.registrationAlert = React.createRef();
+  }
+
+  handleSubmit = event => {
+    event.preventDefault();
+    this.loginUser(event.target.username.value, event.target.password.value);
+  }
+
+  loginUser(username, password) {
+    fetch('http://localhost:8080/login', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: username,
+        password: password,
+      })
+    }).then(function (response) {
+      if (response.status === 200) {
+        this.showRegistrationAlert("success", "Login successful!", "You are now logged in.");
+        localStorage.setItem("username", username);
+        this.props.updateUsername();
+      } else {
+        this.showRegistrationAlert("danger", "Wrong credentials", "Username and/or password is wrong.");
       }
-    };
-    return (
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Login: </label>
-          <input type="text" name="username" />
-        </div>
-        <div>
-          <label>Hasło: </label>
-          <input type="password" name="password" />
-        </div>
-        <div>
-          <input type="submit" value="Zatwierdź!" />
-        </div>
-      </form>
-    );
-  };
+    }.bind(this)).catch(function (error) {
+      this.showRegistrationAlert("danger", "Error", "Something went wrong.");
+    }.bind(this));
+  }
 
-export default function Home() {
+  showRegistrationAlert(variant, heading, message) {
+    this.registrationAlert.current.setVariant(variant);
+    this.registrationAlert.current.setHeading(heading);
+    this.registrationAlert.current.setMessage(message);
+    this.registrationAlert.current.setVisible(true);
+  }
+
+  render() {
     return (
-        <div className='home'>    
-            <Form/>
+      <>
+        <div className="Login" >
+          <h1 className="LoginHeader">Login</h1>
+          <Form onSubmit={this.handleSubmit} >
+
+            <Form.Group controlId="username" size="lg">
+              <Form.Label> Username </Form.Label>
+              <Form.Control autoFocus name="username" />
+            </Form.Group>
+
+            <Form.Group controlId="password" size="lg" >
+              <Form.Label > Password </Form.Label>
+              <Form.Control type="password" name="password" />
+            </Form.Group>
+
+            <Button block="true" size="lg" type="submit">
+              Login
+            </Button>
+
+          </Form>
+
         </div>
+
+        <RegistrationAlert ref={this.registrationAlert} />
+
+      </>
     );
   }
+
+}
+export default Home;
